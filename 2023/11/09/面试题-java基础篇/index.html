@@ -1,0 +1,884 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="feiyu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. JDK和JRE有什么区别？JDK包含JRE，JRE包含JVMJDK是我们用来开发java程序的，而JRE是运行我们开发的java程序的JDK：java开发工具包JRE：java运行环境 2. &#x3D;&#x3D;和equals的区别？&#x3D;&#x3D;：对于基本数据而言，&#x3D;&#x3D;比较的是两者的值是否相等 int a &#x3D; 3; int b &#x3D; 3; a&#x3D;&#x3D;b; &#x2F;&#x2F;结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题-Java基础篇">
+<meta property="og:url" content="http://example.com/2023/11/09/%E9%9D%A2%E8%AF%95%E9%A2%98-java%E5%9F%BA%E7%A1%80%E7%AF%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. JDK和JRE有什么区别？JDK包含JRE，JRE包含JVMJDK是我们用来开发java程序的，而JRE是运行我们开发的java程序的JDK：java开发工具包JRE：java运行环境 2. &#x3D;&#x3D;和equals的区别？&#x3D;&#x3D;：对于基本数据而言，&#x3D;&#x3D;比较的是两者的值是否相等 int a &#x3D; 3; int b &#x3D; 3; a&#x3D;&#x3D;b; &#x2F;&#x2F;结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/1530348/1596379474209-acee785b-f27d-48ca-a5d2-96d3e199e313.png#align=left&display=inline&height=361&originHeight=722&originWidth=1008&size=32919&status=done&style=none&width=504">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/1530348/1597753361782-c090031a-402e-4b51-9a3b-60330232596b.png">
+<meta property="article:published_time" content="2023-11-09T11:52:38.000Z">
+<meta property="article:modified_time" content="2023-11-09T07:28:57.741Z">
+<meta property="article:author" content="feiyu">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/1530348/1596379474209-acee785b-f27d-48ca-a5d2-96d3e199e313.png#align=left&display=inline&height=361&originHeight=722&originWidth=1008&size=32919&status=done&style=none&width=504">
+  
+  
+  
+  <title>面试题-Java基础篇 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Pluto</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="面试题-Java基础篇"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-09 19:52" pubdate>
+          2023年11月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          83 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">面试题-Java基础篇</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1-JDK和JRE有什么区别？"><a href="#1-JDK和JRE有什么区别？" class="headerlink" title="1. JDK和JRE有什么区别？"></a>1. JDK和JRE有什么区别？</h2><p>JDK包含JRE，JRE包含JVM<br>JDK是我们用来开发java程序的，而JRE是运行我们开发的java程序的<br>JDK：java开发工具包<br>JRE：java运行环境</p>
+<h2 id="2-和equals的区别？"><a href="#2-和equals的区别？" class="headerlink" title="2. &#x3D;&#x3D;和equals的区别？"></a>2. &#x3D;&#x3D;和equals的区别？</h2><p>&#x3D;&#x3D;：<br>对于基本数据而言，&#x3D;&#x3D;比较的是两者的值是否相等</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+a<span class="token operator">==</span>b<span class="token punctuation">;</span> <span class="token comment">//结果为true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>对于引用数据，比较的是变量指向的地址<br>情况一：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> a <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> b <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token operator">==</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//结果为true,a和b指向同一个地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>以上这种情况，字符串进入到常量池中，当第一次将”abc”赋值给a时，首先会去常量池中找有没有”abc”这个字符串，如果有，则将a指向该字符串在常量池中的地址，如果没有则在常量池中创建；第二次将”abc”赋值给b的时候，同样会先在常量池中找”abc”这个字符串，这是常量池中已经有”abc”了，则b指向这个地址，因此，这时a和b指向的同一个地址。</p>
+<p>情况二：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token operator">==</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//结果为false,此时a和b指向的不同的地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>以上的这种情况，a和b都是new出来的，即a和b都是对象，对象存储在堆中，a和b指向的”abc”分别存储在堆内存的不同位置，且a和b保存的是”abc”在堆里面的内存的首地址，而这两个地址是不同的。<br>当使用String a &#x3D; new String(“abc”);这种方式创建字符串对象时，在内存中分配空间的方式如下：<br>首先会去常量池中找”abc”，如果找到了，就在堆内存中开辟一块内存空间将对象存进去，同时它的值指向常量池中的”abc”，如果没有则现在常量池中存储”abc”，再再堆内存中开辟一块内存空间将对象存进去，并且它的值指向常量池中”abc”。可见，任何情况下，一个字符串再内存中只会存储一份。<br><img src="https://cdn.nlark.com/yuque/0/2020/png/1530348/1596379474209-acee785b-f27d-48ca-a5d2-96d3e199e313.png#align=left&display=inline&height=361&originHeight=722&originWidth=1008&size=32919&status=done&style=none&width=504" srcset="/img/loading.gif" lazyload alt="image.png"><br>equals：<br>equals方法定义是在Object类中定义，所有类都有equals方法</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//结果为true,a与b逐个字符进行比较</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>equals底层源码：（也是用&#x3D;&#x3D;来比较）</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> anObject<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> anObject<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>在比较的时候，equals和&#x3D;&#x3D;是等价的<br>但是在做字符串比较的时候，比较结果不一样。原因在于，String重写了equals方法，源码如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> anObject<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> anObject<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>anObject <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	<span class="token class-name">String</span> anotherString <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span>anOBject<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">==</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        	<span class="token keyword">char</span> v1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+            <span class="token keyword">char</span> v2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">--</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            	<span class="token keyword">if</span><span class="token punctuation">(</span>v1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> v2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                i<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>String的equals方法中，对每个字符串的字符进行逐一比较，如果相同则返回true，所以对String中equals方法比较的是两个字符串的内容是否相等。</p>
+<p>对于字符串比较，&#x3D;&#x3D;比较的是两个字符串的地址，equals比较的是两个字符串的内容</p>
+<h2 id="3-两个对象的HashCode-相同，则equals-也一定为true-对吗？"><a href="#3-两个对象的HashCode-相同，则equals-也一定为true-对吗？" class="headerlink" title="3. 两个对象的HashCode()相同，则equals()也一定为true,对吗？"></a>3. 两个对象的HashCode()相同，则equals()也一定为true,对吗？</h2><p>不一定<br>同样，如果两个对象的equals()相同，HashCode()也不一定相同<br>类的HashCode方法和equals方法都可以进行重写，返回的值完全在于自己定义</p>
+<h2 id="4-final在java中有什么用？"><a href="#4-final在java中有什么用？" class="headerlink" title="4. final在java中有什么用？"></a>4. final在java中有什么用？</h2><p>可以用来修饰类、方法、变量<br>修饰类：表示该类不能被继承<br>修饰方法：表示该方法不能被重写<br>修饰变量：表示该方法不能被改变<br>（1）基本数据类型：一旦初始化之后，该变量的值不可改变<br>（2）引用数据类型：初始化之后，该变量不能指向另一个对象</p>
+<h2 id="5-Java中的Math-round-1-5-等于多少？"><a href="#5-Java中的Math-round-1-5-等于多少？" class="headerlink" title="5. Java中的Math.round(-1.5)等于多少？"></a>5. Java中的Math.round(-1.5)等于多少？</h2><p>Math.round(-1.5)等于-1<br>round()：返回四舍五入，负小数返回较大的整数，即-1</p>
+<h2 id="6-String属于基本数据类型吗？"><a href="#6-String属于基本数据类型吗？" class="headerlink" title="6. String属于基本数据类型吗？"></a>6. String属于基本数据类型吗？</h2><p>String属于引用数据类型</p>
+<p>基本数据类型 8种<br>char、byte、int、short、long、double、float、boolean<br>引用数据类型<br>String、枚举等</p>
+<h2 id="7-Java中操作字符串都有哪些类？它们之间有什么区别？"><a href="#7-Java中操作字符串都有哪些类？它们之间有什么区别？" class="headerlink" title="7. Java中操作字符串都有哪些类？它们之间有什么区别？"></a>7. Java中操作字符串都有哪些类？它们之间有什么区别？</h2><p>String、StringBuffer、StringBuilder<br>String：String是不可变对象，每次对String类型进行改变的时候其实等同于生成了一个新的String对象，然后将指针指向新的String对象，这样不仅效率低下，而且大量浪费有限的内存空间，若经常改变的字符串最好不要用String<br>区别：<br>String：不可变字符串<br>StringBuffer：可变字符串，效率低，线程安全<br>StringBuilder：可变字符串，效率高，线程不安全<br>初始化的区别：String可以空赋值，StringBuffer和StringBuilder不行</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> a <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token class-name">StringBuffer</span> b <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span class="token comment">//直接报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>对于操作少量数据，使用String<br>多线程操作字符串缓冲区下大量数据，用StringBuffer<br>单线程操作字符串缓冲区下大量数据，用StringBuilder</p>
+<h2 id="8-String-str-“i”与String-str-new-String-“i”-一样吗？"><a href="#8-String-str-“i”与String-str-new-String-“i”-一样吗？" class="headerlink" title="8. String str &#x3D; “i”与String str &#x3D; new String(“i”)一样吗？"></a>8. String str &#x3D; “i”与String str &#x3D; new String(“i”)一样吗？</h2><p>不一样    <br>String str &#x3D; “i” 这种方式，Java虚拟机会将其分配到常量池中，在常量池中，没有重复的元素，执行这条语句时，首先会在常量池中找有没有”i”存在，如果有则将”i”的地址赋给str，如果没有先创建一个，然后再将地址赋给str<br>String str &#x3D; new String(“i”)：对于这种方式，str是被new出来的，会被分配到堆内存中，即使内容一样还是会创建新的对象<br>示例：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> a <span class="token operator">=</span> <span class="token string">"i"</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> b <span class="token operator">=</span> <span class="token string">"i"</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token operator">==</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//结果为true，a和b指向同一个地址</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token operator">==</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//结果为fasle，a指向的是常量池中的地址，而c指向的是堆空间中的"i"对象的地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="9-如何将字符串反转？"><a href="#9-如何将字符串反转？" class="headerlink" title="9. 如何将字符串反转？"></a>9. 如何将字符串反转？</h2><p>有如下几种方式：<br>（1）使用StringBuffer、StringBuilder的reverse()方法</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>（2）利用String的toCharArray()方法<br>先将字符串转化为char类型的数组，然后将每个字符重新进行拼接</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> chars <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将String字符串转化为char数组</span>
+    <span class="token class-name">String</span> reverse <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span><span class="token comment">//定义一个空串用来存储处理后的字符串</span>
+    <span class="token comment">//从char数组的最后一位往前取，实现反转</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> chars<span class="token punctuation">.</span>length <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        reverse <span class="token operator">+=</span> chars<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> reverse<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>（3）利用String的CharAt方法取出字符串中的各个字符<br>charAt()：返回指定索引处的字符</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token class-name">String</span> reverse <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span><span class="token comment">//用来接收处理后的字符串</span>
+    <span class="token keyword">int</span> length <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取字符串的长度</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	reverse <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> reverse<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> reverse<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="10-String类的常用方法有哪些？"><a href="#10-String类的常用方法有哪些？" class="headerlink" title="10. String类的常用方法有哪些？"></a>10. String类的常用方法有哪些？</h2><p>（1）创建字符串</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> str1 <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> str2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> str3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>（2）获取字符串长度<br>length()方法</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//获取字符串长度</span>
+<span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token string">"abcdefg"</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> length <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//length=7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>（3）连接字符串</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String1</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token class-name">String2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>常用：’+’来拼接字符串<br>其他常用方法：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">char</span> <span class="token function">charAt</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span><span class="token operator">:</span>返回指定索引处的<span class="token keyword">char</span>值
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token keyword">int</span> <span class="token function">compareTo</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">)</span><span class="token operator">:</span>把当前字符串和另一个对象比较
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token class-name">String</span> <span class="token function">concat</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span>：将字符串连接到此字符串的结尾
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token keyword">boolean</span> <span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token class-name">String</span> suffix<span class="token punctuation">)</span><span class="token operator">:</span>测试当前字符串是否以指定的后缀结束
+<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">)</span><span class="token operator">:</span>将当前字符串与指定对象比较
+<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>将<span class="token class-name">String</span>转成<span class="token keyword">byte</span>数组
+<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>返回字符串的哈希码
+<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token keyword">int</span> <span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token keyword">int</span> ch<span class="token punctuation">)</span><span class="token operator">:</span>返回字符串中第一次出现处的索引
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="11-抽象类必须要有抽象方法吗？"><a href="#11-抽象类必须要有抽象方法吗？" class="headerlink" title="11. 抽象类必须要有抽象方法吗？"></a>11. 抽象类必须要有抽象方法吗？</h2><p>抽象类可以没有抽象方法，但是如果一个类已经声明成抽象类，即使这个类中没有抽象方法，它也不能再实例化，即不能直接构造一个该类的对象。<br>如果一个类中有了一个抽象方法，那么这个类必须声明为抽象类，否则编译不能通过</p>
+<h2 id="12-普通类和抽象类有哪些区别？"><a href="#12-普通类和抽象类有哪些区别？" class="headerlink" title="12. 普通类和抽象类有哪些区别？"></a>12. 普通类和抽象类有哪些区别？</h2><p>抽象类必须要有abstract修饰<br>抽象类不能被实例化，必须通过非抽象子类（即这个抽象类的子类，但是子类不能是抽象类）来创建实例<br>抽象方法不能被private、final、static等修饰<br>如果一个类继承自抽象类，并且这个类不是抽象类，那么这个类必须实现继承类的抽象方法</p>
+<h2 id="13-抽象类能使用final修饰吗？"><a href="#13-抽象类能使用final修饰吗？" class="headerlink" title="13. 抽象类能使用final修饰吗？"></a>13. 抽象类能使用final修饰吗？</h2><p>不能，final的作用是被修饰的方法、类或者变量不可修改、不能被继承<br>而抽象类就是用于被继承的<br>两者有冲突</p>
+<h2 id="14-接口和抽象类有什么区别？"><a href="#14-接口和抽象类有什么区别？" class="headerlink" title="14. 接口和抽象类有什么区别？"></a>14. 接口和抽象类有什么区别？</h2><p>共同点：<br>（1）不能被实例化<br>（2）都包含抽象方法，这些抽象方法用于描述类具备哪些功能，但是没有提供具体的实现<br>区别：<br>（1）抽象类中可以写非抽象的方法，这样做的好处是提高代码的复用性，在子类中可以不用重复的写它。而接口中只能有抽象的方法<br>（2）一个类只能继承一个直接的父类，这个父类可以是具体的类也可以是抽象类，但是一个类可以实现多个接口</p>
+<p>从设计目的的角度思考：<br>接口的设计目的，是对类的行为进行约束，也就是提供一种机制，可以强制要求不同的类具有相同的行为，它只约束了行为的有无，但不对如何实现行为进行限制<br>抽象类的设计目的，是代码的复用。当不同的类具有某些相同的行为（A），且其中一部分行为的实现方式一致时（B），可以让这些类都派生于一个抽象类，在这个抽象类中实现了B，避免让所有子类来实现B，这就达到了代码复用的目的。A-B的部分，留给各个子类自己实现。正因为A-B在这里没有实现，所以抽象类不允许实例化出来，否则当调用A-B时，无法执行。<br>更多解答见知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20149818">https://www.zhihu.com/question/20149818</a></p>
+<h2 id="15-Java中IO流分为几种？"><a href="#15-Java中IO流分为几种？" class="headerlink" title="15. Java中IO流分为几种？"></a>15. Java中IO流分为几种？</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1530348/1597753361782-c090031a-402e-4b51-9a3b-60330232596b.png" srcset="/img/loading.gif" lazyload>按照数据的流向分：<br>输入流、输出流<br>按照数据的格式：<br>字符流、字节流</p>
+<h2 id="16-BIO、NIO、AIO有什么区别？"><a href="#16-BIO、NIO、AIO有什么区别？" class="headerlink" title="16. BIO、NIO、AIO有什么区别？"></a>16. BIO、NIO、AIO有什么区别？</h2><p>搞清楚三者的区别，首先要对以下几个名词有一定了解</p>
+<p>阻塞：当试图对该文件描述符进行读写时，如果当时没有东西可读，或者暂时不可写，程序就进入等待状态，直到有东西可读或者可写为止。（强迫症，必须一件事情做完才能做其他事情，否则一直等待）<br>非阻塞：如果没有东西可读，或者不可写，读写函数马上返回，不会等待。（先取号，可以去做其他事情，叫号后，过来完成该事情）<br>同步：用户进程触发IO操作并等待或者轮询的去查看IO操作是否就绪。（亲力亲为且专注于一件事）<br>异步：用户进程触发IO操作以后便开始做自己的事情，而当IO操作已经完成的时候会得到IO完成的通知，异步的特点就是通知，java将IO读写委托给OS处理，需要将数据缓冲区地址和大小传给OS。（指示别人帮自己做事，完成后的得到通知）</p>
+<p>| 名称</p>
+<p> | 说明 | 应用场景 | 补充 | 优点 | 缺点 |<br>| — | — | — | — | — | — |<br>| BIO | 阻塞IO | 并发量要求不高的场景，如tomcat | 连接数目比较小且固定的架构 | 模型简单<br>编码简单 | 性能瓶颈低、不适合高并发 |<br>| NIO | 同步非阻塞IO | 高并发量要求的场景，如Nginx、Netty | 连接数目多且<br>连接比较短的架构 | 性能瓶颈高 | 模型复杂、<br>编码复杂、<br>需处理半包问题 |<br>| AIO | 异步非阻塞IO | 不成熟，底层基本是多线程模拟，应用场景不多 | 连接数目多且连接比较长的架构 |  |  |</p>
+<p>假设有这样一个场景，有一排水壶在烧水。<br>对于AIO，它会在每一个水壶上装一个开关，当水开了以后会提醒对应的线程去处理<br>对于NIO，它会叫一个线程不停的循环观察每一个水壶，根据每个水壶当前的状态去处理<br>对于BIO，它会叫一个线程停留在一个水壶处，直到这壶水烧开以后，才会去处理下一壶水</p>
+<h2 id="17-Files的常用方法都有哪些"><a href="#17-Files的常用方法都有哪些" class="headerlink" title="17. Files的常用方法都有哪些?"></a>17. Files的常用方法都有哪些?</h2><ul>
+<li><p>Files.exists()：检测文件路径是否存在。</p>
+</li>
+<li><p>Files.createFile()：创建文件。</p>
+</li>
+<li><p>Files.createDirectory()：创建文件夹。</p>
+</li>
+<li><p>Files.delete()：删除一个文件或目录。</p>
+</li>
+<li><p>Files.copy()：复制文件。</p>
+</li>
+<li><p>Files.move()：移动文件。</p>
+</li>
+<li><p>Files.size()：查看文件个数。</p>
+</li>
+<li><p>Files.read()：读取文件。</p>
+</li>
+<li><p>Files.write()：写入文件。</p>
+</li>
+</ul>
+<h2 id="18-面向对象的特征有哪些方面"><a href="#18-面向对象的特征有哪些方面" class="headerlink" title="18. 面向对象的特征有哪些方面"></a>18. 面向对象的特征有哪些方面</h2><p>抽象：抽象是将一类对象的共同特征总结出来构造类的过程，包括数据抽象和行为抽象两方面。抽象只关注对象有哪些属性和行为，并不关注这些行为的细节是什么。<br>继承：对父类方法的复用，子类继承父类的属性和方法<br>封装：隐藏对象的属性和实现细节，对外公开接口，<br>多态：同一种事务的不同形态</p>
+<h2 id="19-访问修饰符public、private、protected以及不写时的区别？"><a href="#19-访问修饰符public、private、protected以及不写时的区别？" class="headerlink" title="19.访问修饰符public、private、protected以及不写时的区别？"></a>19.访问修饰符public、private、protected以及不写时的区别？</h2><table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>当前类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>default</td>
+<td>✔</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>private</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<h2 id="20-int和Integer有什么区别？"><a href="#20-int和Integer有什么区别？" class="headerlink" title="20. int和Integer有什么区别？"></a>20. int和Integer有什么区别？</h2><p>int是基本数据类型<br>Integer是int的包装类<br>Integer变量必须实例化之后才能使用，int可以直接使用<br>Integer的默认值是null，int的默认值为0<br>Integer实际是对象引用，而int是直接存储数据值</p>
+<h2 id="21-和-的区别？"><a href="#21-和-的区别？" class="headerlink" title="21. &amp;和&amp;&amp;的区别？"></a>21. &amp;和&amp;&amp;的区别？</h2><p>两个都可以用作逻辑与的运算，只有当两边的表达式都为true时，运算结果才为true，只要有一个为false，结果都为false<br>&amp;&amp;还具有短路的功能，意思就是当第一个表达式为false时，则不再计算第二个表达式<br>举例：if(str !&#x3D; null &amp;&amp; !str.equals(“”) )<br>当str&#x3D;null时，后面表达式不会执行，且不会抛出NullPointerException<br>但是如果是&amp;，会抛出NullPointerException<br>&amp;可以用作位运算符</p>
+<h2 id="22-解释内存中的栈-stack-、堆-heap-和方法区-method-area-的用法"><a href="#22-解释内存中的栈-stack-、堆-heap-和方法区-method-area-的用法" class="headerlink" title="22. 解释内存中的栈(stack)、堆(heap)和方法区(method area)的用法"></a>22. 解释内存中的栈(stack)、堆(heap)和方法区(method area)的用法</h2><p>定义一个基本数据类型的变量、一个对象的引用、还有就是函数调用的现场保存都是用JVM中的栈空间<br>通过new、构造器创建的对象则放在堆空间<br>方法区和堆都是各个线程共享的内存区域，用于存储已经被JVM加载的类的信息、常量、静态变量等数据常量池是方法去的一部分</p>
+<h2 id="23-数组有没有-length-方法？String-有没有-length-方法"><a href="#23-数组有没有-length-方法？String-有没有-length-方法" class="headerlink" title="23. 数组有没有 length()方法？String 有没有 length()方法?"></a>23. 数组有没有 length()方法？String 有没有 length()方法?</h2><p>数组中没有length方法，只有length属性，array.length返回的是数组的长度<br>String中由length()方法，返回的是字符串的长度</p>
+<h2 id="24-描述一下-JVM-加载-class-文件的原理机制"><a href="#24-描述一下-JVM-加载-class-文件的原理机制" class="headerlink" title="24. 描述一下 JVM 加载 class 文件的原理机制"></a>24. 描述一下 JVM 加载 class 文件的原理机制</h2><p> Java中的所有类，都需要由类加载器装载到JVM中才能运行。类加载器本身也是一个类，而它的工作就是把class文件从硬盘读取到内存中。在写程序的时候，我们几乎不需要关心类的加载，因为这些都是隐式装载的，除非我们有特殊的用法，像是反射，就需要显式的加载所需要的类。<br>　　类装载方式，有两种 <br>    　　1.隐式装载， 程序在运行过程中当碰到通过new 等方式生成对象时，隐式调用类装载器加载对应的类到jvm中，<br>    　　2.显式装载， 通过class.forname()等方法，显式加载需要的类 <br>  　　隐式加载与显式加载的区别：两者本质是一样? <br>     Java类的加载是动态的，它并不会一次性将所有类全部加载后再运行，而是保证程序运行的基础类(像是基类)完全加载到jvm中，至于其他类，则在需要的时候才加载。这当然就是为了节省内存开销。<br>  　Java的类加载器有三个，对应Java的三种类:（java中的类大致分为三种：   1.系统类   2.扩展类 3.由程序员自定义的类 ）<br>     Bootstrap Loader  &#x2F;&#x2F; 负责加载<strong>系统类</strong> (指的是内置类，像是String，对应于C#中的System类和C&#x2F;C++标准库中的类)<br>            | <br>          - - ExtClassLoader   &#x2F;&#x2F; 负责加载<strong>扩展类</strong>(就是继承类和实现类)<br>                          | <br>                      - - AppClassLoader   &#x2F;&#x2F; 负责加载应用类(<strong>程序员自定义的类</strong>)<br> 三个加载器各自完成自己的工作，但它们是如何协调工作呢？哪一个类该由哪个类加载器完成呢？为了解决这个问题，Java采用了委托模型机制。<br>委托模型机制的工作原理很简单：当类加载器需要加载类的时候，先请示其Parent(即上一层加载器)在其搜索路径载入，如果找不到，才在自己的搜索路径搜索该类。这样的顺序其实就是加载器层次上自顶而下的搜索，因为加载器必须保证基础类的加载。之所以是这种机制，还有一个安全上的考虑：如果某人将一个恶意的基础类加载到jvm，委托模型机制会搜索其父类加载器，显然是不可能找到的，自然就不会将该类加载进来。<br>      我们可以通过这样的代码来获取类加载器:<br>ClassLoader loader &#x3D; ClassName.class.getClassLoader();<br>ClassLoader ParentLoader &#x3D; loader.getParent();<br>注意一个很重要的问题，就是Java在逻辑上并不存在BootstrapKLoader的实体！因为它是用C++编写的，所以打印其内容将会得到null。<br>      <br>前面是对类加载器的简单介绍，它的原理机制非常简单，就是下面几个步骤:<br>1.装载:查找和导入class文件;<br>2.连接:<br>      (1)检查:检查载入的class文件数据的正确性;<br>      (2)准备:为类的静态变量分配存储空间;<br>      (3)解析:将符号引用转换成直接引用(这一步是可选的)<br>3.初始化:初始化静态变量，静态代码块。<br>      这样的过程在程序调用类的静态成员的时候开始执行，所以静态方法main()才会成为一般程序的入口方法。类的构造器也会引发该动作。</p>
+<h2 id="25-GC-是什么？为什么要有-GC？"><a href="#25-GC-是什么？为什么要有-GC？" class="headerlink" title="25. GC 是什么？为什么要有 GC？"></a>25. GC 是什么？为什么要有 GC？</h2><p>GC，Garbage Collection，垃圾回收机制<br>在Java虚拟机中，存在自动内存管理和垃圾清理机制<br>电脑的内存大小的不变的，当我们使用对象的时候，如使用New关键字的时候，就会在内存中生产一个对象，但是我们在使用JAVA开发的时候，当一个对象使用完毕之后我们并没有手动的释放那个对象所占用的内存，就这样在使用程序的过程中，对象越来越多，当内存存放不了这么多对象的时候，电脑就会崩溃了，JAVA为了解决这个问题就推出了这个自动清除无用对象的功能，或者叫机制，这就是GC，有个好听是名字叫垃圾回收，其实就在用来帮你擦屁股的，好让你安心写代码，不用管内存释放，对象清理的事情了。</p>
+<h2 id="26-用Java写一个单例类"><a href="#26-用Java写一个单例类" class="headerlink" title="26. 用Java写一个单例类"></a>26. 用Java写一个单例类</h2><p>1、饿汉式</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">//自己给自己创建一个对象</span>
+    <span class="token comment">//static：为了能够在公共的访问方法中使用	final：为了不能在其他方法中再次创建该类对象且被final修饰的变量不能改变</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton</span> singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//为了不让外界创建该类对象</span>
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">//提供一个公共的访问方法，用来获取该类对象</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	<span class="token keyword">return</span> singleton<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//main方法</span>
+<span class="token keyword">class</span> <span class="token class-name">Demo</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">//通过对象的创建时机来判断是否是饿汉式还是懒汉式</span>
+    	<span class="token class-name">Singleton</span> s <span class="token operator">=</span> <span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>优点：不存在线程安全问题<br>缺点：创建的太早，结束的太晚，占用很多内存<br>2、懒汉式：创建对象时机比较晚，用的时候才会创建</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> singleton<span class="token punctuation">;</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	<span class="token keyword">if</span><span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        	singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>优点：用的时候才会创建，不占用内存<br>缺点：线程不安全<br>3、安全的懒汉式（解决线程安全问题）</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> singleton<span class="token punctuation">;</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">//synchronized:使用同步的方法，就可以解决线程安全问题</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    	<span class="token keyword">if</span><span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        	singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>优点：线程安全，同时不占用内存<br>缺点：效率太低（原因：不管是不是第一次创建对象，只要想要获取对象，就会调用该方法，每调用一次，会判断一次锁，效率很低）<br>4、最有方式</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> singleton<span class="token punctuation">;</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    	<span class="token keyword">if</span><span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        	<span class="token keyword">synchronized</span><span class="token punctuation">(</span><span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>	<span class="token comment">//同步代码块，选择锁：Singleton.class</span>
+            	<span class="token keyword">if</span><span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                	singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>该方法，解决了同步、占内存、以及效率问题</p>
+<h2 id="27-简述以下你了解到的设计模式"><a href="#27-简述以下你了解到的设计模式" class="headerlink" title="27.简述以下你了解到的设计模式"></a>27.简述以下你了解到的设计模式</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p> </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>面试题-Java基础篇</div>
+      <div>http://example.com/2023/11/09/面试题-java基础篇/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>feiyu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/20/Windows%E4%B8%8BIDEA%E7%9A%84%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="Windows下IntelliJ IDEA的安装、配置与使用">
+                        <span class="hidden-mobile">Windows下IntelliJ IDEA的安装、配置与使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
