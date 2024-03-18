@@ -1,0 +1,13 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "pluto",
+    "description": "",
+    "home_page_url": "https://feiyu831143.github.io",
+    "feed_url": "https://feiyu831143.github.io/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "feiyu831143"
+    },
+    "items": [
+    ]
+}
